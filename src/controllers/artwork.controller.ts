@@ -1,5 +1,6 @@
 import type { Request, Response } from "express";
 import { mockArtworks } from "../mocks/artwork.mock.js";
+import { AppError } from "../utils/AppError.js";
 
 class ArtworkController {
     index(req: Request, res: Response) {
@@ -22,7 +23,10 @@ class ArtworkController {
             updated_at
         } = req.body;
         if (!id || !title || !slug || !summary || !cover_image || featured_priority === undefined || !medium || !created_at || !updated_at) {
-            throw new Error("Todos os campos são obrigatórios");
+            throw new AppError("Todos os campos são obrigatórios");
+        }
+        if (mockArtworks.some(artwork => artwork.id === id)) {
+            throw new AppError("Já existe uma obra de arte com esse ID");
         }
         res.status(201).json({ message: "Obra de arte criada com sucesso" });
     }
