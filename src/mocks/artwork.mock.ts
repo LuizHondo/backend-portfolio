@@ -77,7 +77,7 @@ const mockArtworks = [
         "updated_at": "2026-06-01T21:00:00.000Z"
     },
     {
-        "id": "8",
+        "id": "888888",
         "title": "Introdução Prática aos Testes Unitários com Vitest",
         "slug": "introducao-pratica-aos-testes-unitarios-com-vitest",
         "summary": "Aprenda a criar mocks de funções, testar assincronismo e gerar relatórios de cobertura de código.",

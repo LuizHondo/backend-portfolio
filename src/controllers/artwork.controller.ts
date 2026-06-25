@@ -27,6 +27,10 @@ class ArtworkController {
     }
     delete(req: Request, res: Response) {
         const { id } = artworkIdSchema.parse(req.params);
+        const artwork = mockArtworks.find(artwork => artwork.id === id);
+        if(!artwork){
+            throw new AppError("Artwork not found", 404);
+        }
         res.json({ message: `Deleting the artwork ID ${id}` });
     }
 }
